@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Michael's Money Machine</title> <!-- THE TITLE APPEARS ON THE BROWSER TITLE BAR -->
+  </head>
+<body>    <!-- THIS IS WHERE THE VISIBLE PAGE STARTS -->
+
+
+
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-3">Michael's Money Machine</h1>
+<h4>version 1.0</h4>
+    <p class="lead"><canvas id="chart" width="500" height="200" class="pull-left"></canvas><img class="rounded-circle  pull-right" style="height: 200px;" src="/assets/img/Free-Money-Club-image-free-money-club-36155445-686-768.jpg" alt="Money Bag">.</p>
+
+    
+  </div>
+</div>
+
+
+<div class="card">
+  
+  <div class="card-block">
+    <h4 class="card-title">Money</h4>
+    <p class="card-text"><span id="money_count_span"></span>.</p>
+    <button id='clickable_money' class="btn btn-lg btn-warning btn-block" >CLICK HERE FOR MONEY</button>
+  </div>
+</div>
+
+
+
+
+
+
+<div class="card">
+  <ul class="list-group list-group-flush">
+<li id='small_farms' class="list-group-item">
+  <button id='buy_small_farm_btn' class="btn btn-success">Buy Small Farm for $<span id='small_farm_price'></span></button>
+  You have <span id='small_farm_count'></span> Small Farms that produce an income of <span id='small_farm_income'></span>
+</li>
+
+<li id='factory' class="list-group-item">
+  <button id='buy_factory_btn' class="btn btn-success">Buy factory for $<span id='factory_price'></span></button>
+  You have <span id='factory_count'></span> factory that produce an income of <span id='factory_income'></span>
+</li>
+
+<li id='big_factory' class="list-group-item">
+  <button id='buy_big_factory_btn' class="btn btn-success">Buy big factory for $<span id='big_factory_price'></span></button>
+  You have <span id='big_factory_count'></span> big factory that produce an income of <span id='big_factory_income'></span>
+</li>
+
+<li id='big_lab' class="list-group-item">
+  <button id='buy_big_lab_btn' class="btn btn-success mx-auto">Buy big lab for $<span id='big_lab_price'></span></button>
+  You have <span id='big_lab_count'></span> big lab that produce an income of <span id='big_lab_income'></span>
+</li>
+
+<li id='gov'  class="list-group-item">
+  <button id='buy_gov_btn' class="btn btn-success">Buy govorment for $<span id='gov_price'></span></button>
+  You have <span id='gov_count'></span> govorment that produce an income of <span id='gov_income'></span>
+</li>
+
+<li id='planet' class="list-group-item">
+  <button id='buy_planet_btn' class="btn btn-success">Buy planet for $<span id='planet_price'></span></button>
+  You have <span id='planet_count'></span> planet that produce an income of <span id='planet_income'></span>
+</li>
+
+  </ul>
+</div>
+
+<!--
+<div id='small_farms'>
+  <button id='buy_small_farm_btn' class="btn btn-success">Buy Small Farm for $<span id='small_farm_price'></span></button>
+  You have <span id='small_farm_count'></span> Small Farms that produce an income of <span id='small_farm_income'></span>
+</div>
+-->
+
+
+
+
+
+
+
+
+
+
+<!-- A DIV IS A FORMATTED BLOCK -->
+<!-- 
+<div id='footer'>
+	<h2>References</h2>
+	<ul>
+	  <li><a href="https://www.sitepoint.com/jquery-settimeout-function-examples/">sitepoint timer</a></li>
+	</ul>
+</div>
+-->
+</body>   <!-- THIS IS WHERE THE VISIBLE PAGE END -->
+
+
+<script src="/js/jquery.js"></script> <!-- INCLUDING JQUERY GIVES US EASIER TO USE JAVASCRIPT COMMANDS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="js/smoothie.js"></script>
+<!-- THIS IS WHERE THE JAVASCRIPT CODE STARTS -->
+<script>  
+  // In a script block you can use '//' the place comments - everything after these characters on this line is ignored.
+  //
+  
+  
+  // GLOBAL VARIABLES
+  //  var money        = 0;
+  var money_count      = 0;
+  var bank = new TimeSeries();
+  var small_farm_count = 0;
+  var small_farm_price = 10;
+  var small_farm_income = 0.11;
+  
+  var factory_count=0;
+  var factory_price=50;
+  var factory_income=1.01;
+
+  var big_factory_count=0;
+  var big_factory_price=111;
+  var big_factory_income=5;
+  
+  var big_lab_count=0;
+  var big_lab_price=200;
+  var big_lab_income=30; 
+
+ var gov_count=0;
+  var gov_price=1000;
+  var gov_income=50; 
+
+var planet_count=0;
+  var planet_price=25000;
+  var planet_income=500; 
+
+function redraw_screen()
+{
+	$("#money_count_span").html( '$' + money_count.toFixed(2) );
+	$("#small_farm_count").html(small_farm_count);
+	$('#small_farm_price').html( small_farm_price.toFixed(2) );
+	$("#small_farm_income").html( small_farm_income.toFixed(2) );
+	
+	$("#factory_count").html( factory_count);
+	$('#factory_price').html( factory_price.toFixed(2) );
+	$("#factory_income").html( factory_income.toFixed(2) );
+	
+	$("#big_factory_count").html( big_factory_count);
+	$('#big_factory_price').html( big_factory_price.toFixed(2) );
+	$("#big_factory_income").html( big_factory_income.toFixed(2) );
+
+	$("#big_lab_count").html( big_lab_count);
+	$('#big_lab_price').html( big_lab_price.toFixed(2) );
+	$("#big_lab_income").html( big_lab_income.toFixed(2) );
+
+
+	$("#gov_count").html( gov_count);
+	$('#gov_price').html( gov_price.toFixed(2) );
+	$("#gov_income").html( gov_income.toFixed(2) );
+
+	$("#planet_count").html( planet_count);
+	$('#planet_price').html( planet_price.toFixed(2) );
+	$("#planet_income").html( planet_income.toFixed(2) );
+	bank.append(new Date().getTime(), money_count );
+}
+
+
+function when_timer_ticks()
+{
+    // money_count = money_count + 1;  // POCKET MONEY
+    // UPDATE THE SCREEN
+    // console.log( "Money count = " + money_count );
+    
+    // console.log('HELLO');
+    
+    money_count = money_count + 
+           ( small_farm_income * small_farm_count ) + 
+           ( factory_income * factory_count ) +
+           ( big_factory_income * big_factory_count ) +
+           ( big_lab_income * big_lab_count ) +
+           ( gov_income * gov_count ) +
+           ( planet_income * planet_count ) ;
+
+
+
+
+    redraw_screen();
+    
+    //RESET THE TIMER TO CALL AGAIN
+    timer = window.setTimeout( function(){ when_timer_ticks(); }, 1000 );
+  }
+  
+  function buy_small_farm()
+  {
+    if ( money_count < small_farm_price )
+    {
+      console.log('You do not have enough money yet');
+    }
+    else
+    {
+      money_count = money_count - small_farm_price;
+      small_farm_count = small_farm_count + 1;
+      small_farm_price =  small_farm_price + 10 + ( 1/5 * small_farm_price );
+    }
+    redraw_screen();
+  }
+ 
+ 
+ 
+ 
+ 
+  function buy_factory()
+  {
+    if ( money_count < factory_price )
+    {
+      console.log('You do not have enough money yet');
+    }
+    else
+    {
+      money_count = money_count - factory_price;
+      factory_count = factory_count + 1;
+      factory_price =  factory_price  + ( 4/9 * factory_price );
+    }
+    redraw_screen();
+  } 
+  
+  function buy_big_factory()
+  {
+    if ( money_count < big_factory_price )
+    {
+      console.log('You do not have enough money yet');
+    }
+    else
+    {
+      money_count = money_count - big_factory_price;
+      big_factory_count = big_factory_count + 1;
+      big_factory_price =  big_factory_price  + ( 35/70 * big_factory_price );
+    }
+    redraw_screen();
+  } 
+ 
+  function buy_big_lab()
+  {
+    if ( money_count < big_lab_price )
+    {
+      console.log('You do not have enough money yet');
+    }
+    else
+    {
+      money_count = money_count - big_lab_price;
+      big_lab_count = big_lab_count + 1;
+      big_lab_price =  big_lab_price  + ( 3/5 * big_lab_price );
+    }
+    redraw_screen();
+  } 
+
+
+  function buy_gov()
+  {
+    if ( money_count < gov_price )
+    {
+      console.log('You do not have enough money yet');
+    }
+    else
+    {
+      money_count = money_count - gov_price;
+      gov_count = gov_count + 1;
+      gov_price =  gov_price  + ( 53/100 * gov_price );
+    }
+    redraw_screen();
+  }
+    
+
+function buy_planet()
+  {
+    if ( money_count < planet_price )
+    {
+      console.log('You do not have enough money yet');
+    }
+    else
+    {
+      money_count = money_count - planet_price;
+      planet_count = planet_count + 1;
+      planet_price =  planet_price  + ( 33/100 * planet_price );
+
+    }
+    redraw_screen();
+  } 
+
+
+
+  function createTimeline() {
+        var chart = new SmoothieChart();
+        chart.addTimeSeries(bank, { strokeStyle: 'rgba(0, 255, 0, 1)', fillStyle: 'rgba(0, 255, 0, 0.2)', lineWidth: 4 });
+        chart.streamTo(document.getElementById("chart"), 500);
+  }
+
+
+  $( document ).ready(function() // THIS IS THE MAIN CODE STARTING BLOCK
+  {
+  	var timer = window.setTimeout( function(){ when_timer_ticks(); }, 1000 );
+  	$('#clickable_money').click( function(){ money_count = money_count + 1;redraw_screen(); } );
+  	$('#buy_small_farm_btn').click( function(){ buy_small_farm(); } );
+  	$('#buy_factory_btn').click( function(){ buy_factory(); } );
+  
+   	$('#buy_big_factory_btn').click( function(){ buy_big_factory(); } ); 
+
+   	$('#buy_big_lab_btn').click( function(){ buy_big_lab(); } );
+
+   	$('#buy_gov_btn').click( function(){ buy_gov(); } );  
+
+    $('#buy_planet_btn').click( function(){ buy_planet(); } );  
+ 
+
+    createTimeline();
+
+  });
+  
+  
+</script>
+</html>
+
