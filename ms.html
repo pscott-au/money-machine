@@ -125,6 +125,13 @@ canvas {
 <li id='solar' class="list-group-item">
   <button id='buy_solar_s_btn' class="btn btn-success">Buy Solar System for $<span id='solar_s_price'></span></button>
   <br/>You have <span id='solar_s_count'></span> solar systems that produce an income of <span id='solar_s_income'></span>
+<<<<<<< HEAD
+=======
+</li>
+<li id='solar' class="list-group-item">
+  <button id='buy_galaxy_btn' class="btn btn-success">Buy Galaxy for $<span id='galaxy_price'></span></button>
+  <br/>You have <span id='galaxy_count'></span> galaxies that produce an income of <span id='galaxy_income'></span>
+>>>>>>> 0cf7dacdcfb6a4636efa936b46adc2e0c9f6fae7
 </li>
   </ul>
 </div>  
@@ -133,6 +140,7 @@ canvas {
         <div class="col-md-4">
 
 <div class="row card" >
+<<<<<<< HEAD
 <div class="col-md-12">
  <button type="button" id='buy_small_farm_upgrade_btn' class="btn btn-success col-md-12" data-toggle="tooltip" data-placement="top" title="Who says money doesn't grow on trees">
  Small Farms Upgrade<br/>
@@ -140,6 +148,52 @@ canvas {
  Small Farms <span id='small_farm_upgrade_multipler'>100</span> x more productive 
  </button>
 </div>
+</div>
+
+
+<!--
+<div class="row card" >
+<div class="col-md-12">
+ <button type="button" id='ug-btn-factory' class="btn btn-success col-md-12 disabled" data-toggle="tooltip" data-placement="top" title="Who says money doesn't grow on trees">
+ Factory +<br/>
+ $100000<br/>
+ Factories 10 x more productive
+ </button>
+=======
+  <div class="col-md-12">
+   <button type="button" id='buy_small_farm_upgrade_btn' class="btn btn-success col-md-12" data-toggle="tooltip" data-placement="top" title="Who says money doesn't grow on trees">
+     Small Farms Upgrade<br/>
+     Cost $<span id='small_farm_upgrade_price'>3000</span><br/>
+     Small Farms <span id='small_farm_upgrade_multipler'>100</span> x more productive 
+   </button>
+  </div>
+>>>>>>> 0cf7dacdcfb6a4636efa936b46adc2e0c9f6fae7
+</div>
+</div>
+-->
+
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="row card" >
+  <div class="col-md-12">
+   <button type="button" id='buy_planet_upgrade_btn' class="btn btn-success col-md-12" data-toggle="tooltip" data-placement="top" title="Planets as big as galaxies">
+     Planet Upgrade<br/>
+     Cost $<span id='planet_upgrade_price'>10000000</span><br/>
+     Planets <span id='planet_upgrade_multipler'>1000</span> x more productive 
+   </button>
+  </div>
 </div>
 
 
@@ -188,10 +242,10 @@ canvas {
 <!-- A DIV IS A FORMATTED BLOCK -->
 <!-- 
 <div id='footer'>
-	<h2>References</h2>
-	<ul>
-	  <li><a href="https://www.sitepoint.com/jquery-settimeout-function-examples/">sitepoint timer</a></li>
-	</ul>
+  <h2>References</h2>
+  <ul>
+    <li><a href="https://www.sitepoint.com/jquery-settimeout-function-examples/">sitepoint timer</a></li>
+  </ul>
 </div>
 -->
 </body>   <!-- THIS IS WHERE THE VISIBLE PAGE END -->
@@ -227,6 +281,15 @@ canvas {
   var small_farm_upgrade_count = 0;
   var small_farm_upgrade_mult = 100;
 
+<<<<<<< HEAD
+=======
+  var planet_upgrade_price = 100000;
+  var planet_upgrade_count = 0;
+  var planet_upgrade_mult = 100;
+
+
+
+>>>>>>> 0cf7dacdcfb6a4636efa936b46adc2e0c9f6fae7
 
   var factory_count=0;
   var factory_price=50;
@@ -253,10 +316,17 @@ var planet_count=0;
   var solar_s_price=100000;
   var solar_s_income=7000; 
 
+<<<<<<< HEAD
+=======
+  var galaxy_count=0;
+  var galaxy_price=100000000;
+  var galaxy_income=700000; 
+>>>>>>> 0cf7dacdcfb6a4636efa936b46adc2e0c9f6fae7
   
 
 function redraw_screen()
 {
+<<<<<<< HEAD
 	$("#money_count_span").html( '$' + money_count.toFixed(2) );
 
   $("#per_second_amount_span").html( '$' + per_second.toFixed(2) );
@@ -285,12 +355,64 @@ function redraw_screen()
 	$("#planet_count").html( planet_count);
 	$('#planet_price').html( planet_price.toFixed(2) );
 	$("#planet_income").html( planet_income.toFixed(2) );
+=======
+  $("#money_count_span").html( '$' + money_count.toFixed(2) );
+
+  $("#per_second_amount_span").html( '$' + per_second.toFixed(2) );
+
+  $("#small_farm_count").html(small_farm_count);
+  $('#small_farm_price').html( small_farm_price.toFixed(2) );
+  $("#small_farm_income").html( small_farm_income.toFixed(2) );
+  
+  $("#factory_count").html( factory_count);
+  $('#factory_price').html( factory_price.toFixed(2) );
+  $("#factory_income").html( factory_income.toFixed(2) );
+  
+  $("#big_factory_count").html( big_factory_count);
+  $('#big_factory_price').html( big_factory_price.toFixed(2) );
+  $("#big_factory_income").html( big_factory_income.toFixed(2) );
+
+  $("#big_lab_count").html( big_lab_count);
+  $('#big_lab_price').html( big_lab_price.toFixed(2) );
+  $("#big_lab_income").html( big_lab_income.toFixed(2) );
+
+
+  $("#gov_count").html( gov_count);
+  $('#gov_price').html( gov_price.toFixed(2) );
+  $("#gov_income").html( gov_income.toFixed(2) );
+
+  $("#planet_count").html( planet_count);
+  $('#planet_price').html( planet_price.toFixed(2) );
+  $("#planet_income").html( planet_income.toFixed(2) );
+>>>>>>> 0cf7dacdcfb6a4636efa936b46adc2e0c9f6fae7
 
   $("#solar_s_count").html( solar_s_count);
   $('#solar_s_price').html( solar_s_price.toFixed(2) );
   $("#solar_s_income").html( solar_s_income.toFixed(2) );
 
+<<<<<<< HEAD
 	bank.append(new Date().getTime(), money_count );
+=======
+  $("#galaxy_count").html( galaxy_count);
+  $('#galaxy_price').html( galaxy_price.toFixed(2) );
+  $("#galaxy_income").html( galaxy_income.toFixed(2) );
+
+  bank.append(new Date().getTime(), money_count );
+}
+
+
+
+function update_leaderboard()
+{
+      $.post( "/cgi-bin/mms.cgi", { name: $('#name-input').val(), score: per_second }, function( data ) {
+        console.log('got cgi response');
+        // console.log( data ); // John
+        $('#lead_table tbody > tr').remove();       
+          $.each(data.leaders, function (index, value) {
+            $('#lead_table').append('<tr><td>' + data.leaders[index][0] + '</td><td>' + data.leaders[index][1] + '</td></tr>');
+        });
+      }, "json");
+>>>>>>> 0cf7dacdcfb6a4636efa936b46adc2e0c9f6fae7
 }
 
 
@@ -322,12 +444,21 @@ function when_timer_ticks()
            ( big_lab_income * big_lab_count ) +
            ( gov_income * gov_count ) +
            ( planet_income * planet_count ) 
+<<<<<<< HEAD
            + ( solar_s_income * solar_s_count );
+=======
+           + ( solar_s_income * solar_s_count )
+           + ( galaxy_income * galaxy_count );
+>>>>>>> 0cf7dacdcfb6a4636efa936b46adc2e0c9f6fae7
 
     money_count = money_count + per_second;
                
 
+<<<<<<< HEAD
     $.each([ 'small_farm', 'factory','big_factory','big_lab','gov','planet', 'solar_s','small_farm_upgrade' ], function( index, value ) {
+=======
+    $.each([ 'small_farm', 'factory','big_factory','big_lab','gov','planet', 'solar_s','small_farm_upgrade', 'galaxy', 'planet_upgrade' ], function( index, value ) {
+>>>>>>> 0cf7dacdcfb6a4636efa936b46adc2e0c9f6fae7
       var price = eval( value+'_price' );
       if ( money_count >= price )
       {
@@ -385,11 +516,35 @@ function when_timer_ticks()
       $('#buy_small_farm_upgrade_btn').hide();
       small_farm_income = small_farm_income * small_farm_upgrade_mult;
       money_count = money_count - small_farm_upgrade_price;
+<<<<<<< HEAD
+=======
+      $('#buy_planet_upgrade_btn').show();
+>>>>>>> 0cf7dacdcfb6a4636efa936b46adc2e0c9f6fae7
     }
 
   }
  
  
+  function buy_planet_multipler()
+  {
+    console.log('buy_planet_multipler()');
+     //var small_farm_multiplier = 1; 
+     // var small_farm_upgrade_price = 2000;
+      //var small_farm_upgrade_count = 0;
+      //var small_farm_upgrade_mult = 100;
+      if ( money_count < planet_upgrade_price )
+    {
+      console.log('You do not have enough money yet');
+    }
+    else
+    {
+      $('#buy_planet_upgrade_btn').hide();
+      planet_income = planet_income * planet_upgrade_mult;
+      money_count = money_count - planet_upgrade_price;
+    }
+
+  }
+
  
  
  
@@ -482,7 +637,26 @@ function buy_solar_s()
       money_count = money_count - solar_s_price;
       solar_s_count = solar_s_count + 1;
       solar_s_price =  solar_s_price  + ( 21/77 * solar_s_price );
+<<<<<<< HEAD
 
+=======
+
+    }
+    redraw_screen();
+  } 
+
+function buy_galaxy()
+  {
+    if ( money_count < galaxy_price )
+    {
+      console.log('You do not have enough money yet');
+    }
+    else
+    {
+      money_count = money_count - galaxy_price;
+      galaxy_count = galaxy_count + 1;
+      galaxy_price =  galaxy_price  + ( 3/2 * galaxy_price );
+>>>>>>> 0cf7dacdcfb6a4636efa936b46adc2e0c9f6fae7
     }
     redraw_screen();
   } 
@@ -583,23 +757,39 @@ function numberToEnglish( n ) {
 
   $( document ).ready(function() // THIS IS THE MAIN CODE STARTING BLOCK
   {
+<<<<<<< HEAD
     update_leaderboard();
   	var timer = window.setTimeout( function(){ when_timer_ticks(); }, 1000 );
   	$('#clickable_money').click( function(){ money_count = money_count + 1;redraw_screen(); } );
   	$('#buy_small_farm_btn').click( function(){ buy_small_farm(); } );
   	$('#buy_factory_btn').click( function(){ buy_factory(); } );
+=======
+    $('#buy_planet_upgrade_btn').hide();
+    update_leaderboard();
+    var timer = window.setTimeout( function(){ when_timer_ticks(); }, 1000 );
+    $('#clickable_money').click( function(){ money_count = money_count + 1;redraw_screen(); } );
+    $('#buy_small_farm_btn').click( function(){ buy_small_farm(); } );
+    $('#buy_factory_btn').click( function(){ buy_factory(); } );
+>>>>>>> 0cf7dacdcfb6a4636efa936b46adc2e0c9f6fae7
   
-   	$('#buy_big_factory_btn').click( function(){ buy_big_factory(); } ); 
+    $('#buy_big_factory_btn').click( function(){ buy_big_factory(); } ); 
 
-   	$('#buy_big_lab_btn').click( function(){ buy_big_lab(); } );
+    $('#buy_big_lab_btn').click( function(){ buy_big_lab(); } );
 
-   	$('#buy_gov_btn').click( function(){ buy_gov(); } );  
+    $('#buy_gov_btn').click( function(){ buy_gov(); } );  
 
     $('#buy_planet_btn').click( function(){ buy_planet(); } );  
  
     $('#buy_solar_s_btn').click( function(){ buy_solar_s(); } );  
 
+<<<<<<< HEAD
     $('#buy_small_farm_upgrade_btn').click( function(){   buy_small_farm_multipler(); } );  
+=======
+    $('#buy_galaxy_btn').click( function(){ buy_galaxy(); } );  
+
+    $('#buy_small_farm_upgrade_btn').click( function(){   buy_small_farm_multipler(); } );  
+    $('#buy_planet_upgrade_btn').click( function(){   buy_planet_multipler(); } );  
+>>>>>>> 0cf7dacdcfb6a4636efa936b46adc2e0c9f6fae7
 
     createTimeline();
 
@@ -612,3 +802,7 @@ function numberToEnglish( n ) {
 </html>
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0cf7dacdcfb6a4636efa936b46adc2e0c9f6fae7
